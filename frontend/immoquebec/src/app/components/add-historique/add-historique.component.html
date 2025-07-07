@@ -1,0 +1,88 @@
+<div class="history-container">
+  <div class="info-container">
+    <h2 class="head">Ajouter votre historique ici</h2>
+  </div>
+  <form [formGroup]="historyFormGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group" formGroupName="hist">
+
+      <div class="search-address">
+        <div id="autocomplete-add-historique" class="autocomplete-container"></div>
+      </div>
+
+      <input formControlName="country" type="text" placeholder="Pays">
+      <div *ngIf="historyFormGroup.get('hist.country')?.errors && historyFormGroup.get('hist.country')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.country')?.errors?.['required']">
+          Le Pays est requis.
+        </div>
+      </div>
+
+      <input formControlName="city" type="text" placeholder="Ville">
+      <div *ngIf="historyFormGroup.get('hist.city')?.errors && historyFormGroup.get('hist.city')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.city')?.errors?.['required']">
+          La ville est requise.
+        </div>
+      </div>
+
+      <input formControlName="streetName" type="text" placeholder="Nom de la rue">
+      <div *ngIf="historyFormGroup.get('hist.streetName')?.errors && historyFormGroup.get('hist.streetName')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.streetName')?.errors?.['required']">
+          Le nom de la rue est requis.
+        </div>
+      </div>
+
+      <input formControlName="streetNumber" type="text" placeholder="Numéro de rue">
+      <div
+        *ngIf="historyFormGroup.get('hist.streetNumber')?.errors && historyFormGroup.get('hist.streetNumber')?.touched"
+        class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.streetNumber')?.errors?.['required']">
+          Le numéro de rue est requis.
+        </div>
+        <div *ngIf="historyFormGroup.get('hist.streetNumber')?.errors?.['pattern']">
+          Le numéro de rue doit être numérique.
+        </div>
+      </div>
+
+      <input formControlName="postalCode" type="text" placeholder="Code postal">
+      <div *ngIf="historyFormGroup.get('hist.postalCode')?.errors && historyFormGroup.get('hist.postalCode')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.postalCode')?.errors?.['required']">
+          Le code postal est requis.
+        </div>
+      </div>
+
+
+      <input formControlName="montantBail" type="text" placeholder="Montant du bail">
+      <div *ngIf="historyFormGroup.get('hist.montantBail')?.errors && historyFormGroup.get('hist.montantBail')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.montantBail')?.errors?.['required']">
+          Le montant du bail est requis.
+        </div>
+      </div>
+
+      <label for="dateEntree">Date d'entrée</label>
+      <input id="dateEntree" formControlName="dateEntree" type="date" placeholder="Date d'entrée">
+      <div *ngIf="historyFormGroup.get('hist.dateEntree')?.errors && historyFormGroup.get('hist.dateEntree')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.dateEntree')?.errors?.['required']">
+          La date d'entrée est requise.
+        </div>
+      </div>
+
+      <label for="dateSortie">Date de sortie</label>
+      <input id="dateSortie" formControlName="dateSortie" type="date" placeholder="Date de sortie">
+      <div *ngIf="historyFormGroup.get('hist.dateSortie')?.errors && historyFormGroup.get('hist.dateSortie')?.touched"
+           class="validation-text">
+        <div *ngIf="historyFormGroup.get('hist.dateSortie')?.errors?.['required']">
+          La date de sortie est requise.
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">CRÉER</button>
+      </div>
+    </div>
+  </form>
+</div>

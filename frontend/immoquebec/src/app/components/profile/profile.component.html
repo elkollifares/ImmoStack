@@ -1,0 +1,25 @@
+  <div class="profile-container">
+      <h3 class="profile-h3">My profile</h3>
+      <div class="profile-flex-container">
+        <div class="user-info">
+          <div class="img-profile">
+            <img src={{user.imageUrl}}>
+          </div>
+          <p>{{user.name}}</p>
+          <p>{{this.authService.currentUserValue!.username}}</p>
+          <p>{{this.authService.currentUserValue!.email}}</p>
+          <p>{{user.phoneNumber}}</p>
+          <button (click)="editData()" class="add-button">
+            <p>Edit data</p>
+          </button>
+        </div>
+        <div class="ad-info">
+          <h3 class="h3-ad">My ads</h3>
+          <div class="list-ad-profile" >
+            <div  *ngFor="let tempAd of ads">
+            <app-ad-tile routerLink="/offers/{{tempAd.id}}" [state]="{data: tempAd}" [adTile]="tempAd" [favList]="favIdList" [showDeleteButton]="true" (deleteAd)="removeAd($event)"></app-ad-tile>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>

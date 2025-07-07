@@ -1,0 +1,32 @@
+mat-paginator {
+    font-size: 1.2em;
+  }
+
+  mat-select {
+    font-size: 1.5em;
+  }
+
+  .mat-select-value-text {
+    font-size: 1.5em;
+  }
+
+.add-button {
+  display: flex;
+  align-items: center;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button i {
+  margin-right: 5px;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
