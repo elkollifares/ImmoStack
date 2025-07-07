@@ -1,0 +1,37 @@
+<nav>
+    <button mat-button [matMenuTriggerFor]="menu"><i class="fas fa-bars"></i></button>
+    <mat-menu #menu="matMenu" xPosition="after">
+      <button routerLink="/for-sale" routerLinkActive="active-link" >Acheter</button>
+      <button routerLink="/for-rent" routerLinkActive="active-link" >Louer</button>
+      <button routerLink="/history" routerLinkActive="active-link" >Historique</button>
+      <button routerLink="/low-income" routerLinkActive="active-link" >Faible Revenu</button>
+      <button routerLink="/profile" routerLinkActive="active-link" >Mon profile</button>
+      <button routerLink="/messenger" routerLinkActive="active-link" >Messages</button>
+      <div *ngIf='authService.isLoggedIn()'>
+      <button (click)="logout()" mat-menu-item>LOGOUT</button>
+    </div>
+    </mat-menu>
+
+    <p class="logo" routerLink="/" routerLinkActive="active-link"></p>
+    <ul>
+      <li><a routerLink="/for-sale" routerLinkActive="active-link">Acheter</a></li>
+      <li><a routerLink="/for-rent" routerLinkActive="active-link">Louer</a></li>
+      <li><a routerLink="/history" routerLinkActive="active-link" >Historique</a></li>
+      <li><a routerLink="/low-income" routerLinkActive="active-link" >Faible Revenu</a></li>
+
+      <div class="placeholder"></div>
+      <div *ngIf='authService.isLoggedIn()'>
+        <p class="logout" (click)="logout()">logout</p>
+      </div>
+      <a routerLink="/messenger" routerLinkActive="active-link"><i class="far fa-envelope"></i></a>
+      <a routerLink="/favorites" routerLinkActive="active-link"><i class="far fa-heart"></i></a>
+      <div *ngIf='authService.isLoggedIn()'>
+        <div routerLink="/profile" routerLinkActive="active-link" class="img-container">
+          <img src={{imageUrl}}>
+        </div>
+      </div>
+    </ul>
+    <a routerLink="/favorites" routerLinkActive="active-link" class="heart-mobile"><i class="far fa-heart"></i></a>
+  </nav>
+
+

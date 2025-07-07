@@ -1,0 +1,59 @@
+<div class="register-container">
+    <form [formGroup]="registrationFormGroup" (ngSubmit)="onSubmit()">
+      <div class="left">
+        <h2>Complete registration</h2>
+        <div class="form-img">
+          <label class="label-img" for="file-input">
+            <i class="far fa-images"></i>
+            <p id="choose">PRESS TO CHOOSE A FILE</p>
+          </label>
+          <input class="file-input" id="file-input" name="file" type="file" (change)="onFileChange($event)">
+        </div>
+        <img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:400px">
+      </div>
+      <div class="input-cont">
+        <div class="inputs">
+          <input formControlName="name" type="text" placeholder="name">
+          <div *ngIf="f['name'].errors && f['name'].touched" class="validation-text">
+
+            <div *ngIf="f['name'].errors['required']">
+              Name is required
+            </div>
+
+            <div *ngIf="f['name'].errors['minlength']">
+              Name must have at least 2 characters
+            </div>
+
+          </div>
+
+          <input formControlName="surname" type="text" placeholder="surname">
+          <div *ngIf="f['surname'].errors && f['surname'].touched" class="validation-text">
+
+            <div *ngIf="f['surname'].errors['required']">
+              Surname is required
+            </div>
+
+            <div *ngIf="f['surname'].errors['minlength']">
+              Surname must have at least 2 characters
+            </div>
+          </div>
+          <input formControlName="phoneNumber" type="text" placeholder="phone number">
+          <div *ngIf="f['phoneNumber'].errors && f['phoneNumber'].touched" class="validation-text">
+            <div *ngIf="f['phoneNumber'].errors['required']">
+              Phone number is required
+            </div>
+            <div *ngIf="f['phoneNumber'].errors['pattern']">
+              Phone number must be numeric only
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!editMode; else myElse" class="submit-div">
+          <button type="submit">SIGN UP</button>
+        </div>
+
+        <ng-template #myElse>
+          <button type="submit">UPDATE</button>
+        </ng-template>
+      </div>
+    </form>
+  </div>

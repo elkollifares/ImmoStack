@@ -1,0 +1,36 @@
+<div class="ad-container">
+    <div class="img-container">
+      <button *ngIf="showDeleteButton" class="delete-button" (click)="onDelete($event)">
+        <i class="fas fa-times"></i>
+      </button>
+      <div *ngIf="adTile.adImages.length !== 0">
+      <img src={{adTile.adImages[0].imageUrl}}>
+    </div>
+    </div>
+    <div class="info">
+      <div *ngIf="adTile.adType == 'SALE'; then thenBlock else myElse"></div>
+      <ng-template #thenBlock>
+        <p class="price">{{adTile.price}} $</p>
+      </ng-template>
+      <ng-template #myElse>
+        <p class="price">{{adTile.price}} $</p>
+      </ng-template>
+      <p class="name">{{(adTile.adName.length > 20)?(adTile.adName | slice:0:20)+'..':(adTile.adName)}}</p>
+      <div class="location">
+        <p>{{adTile.city}}, {{adTile.country}}</p><i class="{{heart.value}}"></i>
+      </div>
+      <div class="additional">
+        <i class="fas fa-home"></i>
+        <p>{{adTile.plotSurface}}m<sup>2</sup></p>
+        <i class="fas fa-bed"></i>
+        <p>{{adTile.numberOfBedrooms}}</p>
+        <i class="fas fa-bath"></i>
+        <p>{{adTile.numberOfBathrooms}}</p>
+        <div *ngIf="adTile.lowIncomeBuilding">
+          <i class="fas fa-hand-holding-heart"></i>
+          <p>Low</p>
+        </div>
+      </div>
+    </div>
+  </div>
+

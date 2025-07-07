@@ -1,0 +1,133 @@
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin-top: 2em;
+  background-color: #eef2f3;
+}
+
+form {
+  width: 50%;
+  max-width: 700px;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+}
+
+.input-cont {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+label {
+  margin-bottom: 0.5em;
+  font-size: 1.1em;
+  color: #444;
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+  width: 100%;
+  padding: 0.8em;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #007BFF;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.form-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  background: #f8f8f8;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.label-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.fa-images {
+  font-size: 4em;
+  color: #bbb;
+}
+
+button {
+  width: 100%;
+  padding: 0.8em;
+  background: #28a745;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #218838;
+}
+
+.submit-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+}
+
+p {
+  color: #444;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 1em;
+}
+
+@media screen and (max-width: 768px) {
+  form {
+    width: 90%;
+    padding: 1.5em;
+  }
+
+  .form-img {
+    height: 150px;
+  }
+
+  input[type="text"], input[type="password"], button {
+    font-size: 1em;
+  }
+}

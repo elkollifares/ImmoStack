@@ -1,0 +1,89 @@
+<div class="history-container">
+  <div class="info-container">
+    <h2 class="head">{{ pageTitle }}</h2>
+    <button class="add-button" (click)="navigateToAddHistory()">
+      <i class="fas fa-plus"></i>
+      <p>Ajouter un historique de bail </p>
+    </button>
+  </div>
+
+  <div class="search-address">
+    <div id="autocomplete" class="autocomplete-container"></div>
+  </div>
+
+  <form [formGroup]="adFormGroup" (ngSubmit)="onSubmit()">
+    <input formControlName="country" type="text" placeholder="Pays">
+    <div *ngIf="adFormGroup.get('country')?.errors && adFormGroup.get('country')?.touched" class="validation-text">
+      <div *ngIf="adFormGroup.get('country')?.errors?.['required']">
+        Le Pays est requis.
+      </div>
+    </div>
+
+    <input formControlName="city" type="text" placeholder="Ville">
+    <div *ngIf="adFormGroup.get('city')?.errors && adFormGroup.get('city')?.touched" class="validation-text">
+      <div *ngIf="adFormGroup.get('city')?.errors?.['required']">
+        La ville est requise.
+      </div>
+    </div>
+
+    <input formControlName="streetName" type="text" placeholder="Nom de la rue">
+    <div *ngIf="adFormGroup.get('streetName')?.errors && adFormGroup.get('streetName')?.touched" class="validation-text">
+      <div *ngIf="adFormGroup.get('streetName')?.errors?.['required']">
+        Le nom de la rue est requis.
+      </div>
+    </div>
+
+    <input formControlName="streetNumber" type="text" placeholder="Numéro de rue">
+    <div *ngIf="adFormGroup.get('streetNumber')?.errors && adFormGroup.get('streetNumber')?.touched" class="validation-text">
+      <div *ngIf="adFormGroup.get('streetNumber')?.errors?.['required']">
+        Le numéro de rue est requis.
+      </div>
+      <div *ngIf="adFormGroup.get('streetNumber')?.errors?.['pattern']">
+        Le numéro de rue doit être numérique.
+      </div>
+    </div>
+
+    <input formControlName="postalCode" type="text" placeholder="Code postal">
+    <div *ngIf="adFormGroup.get('postalCode')?.errors && adFormGroup.get('postalCode')?.touched" class="validation-text">
+      <div *ngIf="adFormGroup.get('postalCode')?.errors?.['required']">
+        Le code postal est requis.
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button type="submit">Rechercher</button>
+    </div>
+
+  </form>
+
+
+
+  <div class="history-container">
+    <table class="history-table">
+      <thead>
+      <tr>
+        <th>Nom de rue</th>
+        <th>Numero de rue</th>
+        <th>Ville</th>
+        <th>Pays</th>
+        <th>Code postale</th>
+        <th>Montant de bail</th>
+        <th>Date d'entrée</th>
+        <th>Date de sortie</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of historyItems">
+        <td>{{ item.address?.streetName }}</td>
+        <td>{{ item.address?.streetNumber }}</td>
+          <td>{{ item.address?.city?.name }}</td>
+        <td>{{ item.address?.country?.name }}</td>
+        <td>{{ item.address?.postalCode }}</td>
+        <td>{{ item.montantBail | currency }}</td>
+        <td>{{ item.dateEntree | date }}</td>
+        <td>{{ item.dateSortie | date }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+.log-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  margin-top: 4em;
+  overflow: hidden;
+}
+
+h2 {
+  margin-bottom: 2em;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  font-size: 2em;
+}
+
+.left {
+  height: 100%;
+  width: 45%;
+  background-image: url('../../../../img.png');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.right {
+  height: 100%;
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #0b2e49;
+}
+
+.if-div {
+  height: 100%;
+  width: 100%;
+}
+
+app-login-form,
+app-register-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #658dd6;
+  padding: 2em;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+
+  .log-container {
+    margin-top: 0;
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    width: 100%;
+    background-image: url('../../../../img.png');
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  app-login-form,
+  app-register-form {
+    box-shadow: none;
+    padding: 1em;
+    border-radius: 0;
+  }
+}

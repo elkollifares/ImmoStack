@@ -1,0 +1,29 @@
+<div class="ads-container">
+    <div class="info-container">
+      <h2 class="head">{{pageTitle}}</h2>
+      <button routerLink="/add-offer" routerLinkActive="active-link" class="add-button"><i class="fas fa-plus"></i>
+        <p>Ajouter une propriété</p>
+      </button>
+    </div>
+    <div class="search-container">
+      <div class="search">
+        <input #myInput type="text" placeholder="SEARCH" class="search-input" (keyup.enter)="doSearch(myInput.value)" />
+        <i class="fas fa-search"></i>
+      </div>
+    </div>
+    <button class="filter" mat-button [matMenuTriggerFor]="menu">Sort by price<i class="fas fa-chevron-down"></i></button>
+    <mat-menu #menu="matMenu" xPosition="after">
+      <button (click)="sortByPrice(true)" mat-menu-item>ASCENDING</button>
+      <button (click)="sortByPrice(false)" mat-menu-item>DESCENDING</button>
+    </mat-menu>
+    <div class="grid-container">
+      <div class="container">
+        <div *ngFor="let tempAd of ads">
+          <app-ad-tile routerLink="/offers/{{tempAd.id}}" [state]="{data: tempAd}" [adTile]="tempAd" [favList]="favIdList"></app-ad-tile>
+        </div>
+      </div>
+    </div>
+    <mat-paginator #paginator [length]="theTotalElements" [pageSize]="thePageSize" [pageSizeOptions]="[6, 12, 18]"
+      (page)="OnPageChange($event)">
+    </mat-paginator>
+  </div>

@@ -1,0 +1,160 @@
+<div class="add-container">
+  <form [formGroup]="adFormGroup" class="ad-form" (ngSubmit)="onSubmit()">
+    <div class="form-group" formGroupName="ad">
+      <div class="description">
+
+        <div class="form-img">
+          <label class="label-img" for="file-input">
+            <i class="far fa-images"></i> APPUYEZ POUR CHOISIR UN À 4 IMAGES
+          </label>
+          <input class="file-input" id="file-input" type="file" (change)="onFileChange($event)" multiple>
+        </div>
+
+        <div class="image-previews">
+          <img [src]="imageSrc" *ngIf="imageSrc" style="height: 200px; width:400px">
+          <div class="thumbnails-container">
+            <div *ngFor="let link of adLinks; let i = index">
+              <div *ngIf="i > 0" class="thumbnail">
+                <img [src]="link" style="height: 100px; width: 100px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <textarea formControlName="description" rows="10" placeholder="Écrivez la description de la propriété ici"></textarea>
+        <div *ngIf="adFormGroup.get('ad.description')?.errors && adFormGroup.get('ad.description')?.touched" class="validation-text">
+          <div *ngIf="adFormGroup.get('ad.description')?.errors?.['required']">
+            La description est obligatoire.
+          </div>
+          <div *ngIf="adFormGroup.get('ad.description')?.errors?.['minlength']">
+            La description doit comporter au moins 10 caractères.
+          </div>
+        </div>
+      </div>
+
+      <div class="search-address">
+        <div id="autocomplete" class="autocomplete-container"></div>
+      </div>
+
+      <div class="form-sections">
+        <div class="form-section part1">
+          <input formControlName="name" type="text" placeholder="Nom">
+          <div *ngIf="adFormGroup.get('ad.name')?.errors && adFormGroup.get('ad.name')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.name')?.errors?.['required']">
+              Le nom est requis.
+            </div>
+          </div>
+
+          <input formControlName="country" type="text" placeholder="Pays">
+          <div *ngIf="adFormGroup.get('ad.country')?.errors && adFormGroup.get('ad.country')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.country')?.errors?.['required']">
+              Le Pays est requis.
+            </div>
+          </div>
+
+          <input formControlName="city" type="text" placeholder="Ville">
+          <div *ngIf="adFormGroup.get('ad.city')?.errors && adFormGroup.get('ad.city')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.city')?.errors?.['required']">
+              La ville est requise.
+            </div>
+          </div>
+
+          <input formControlName="streetName" type="text" placeholder="Nom de la rue">
+          <div *ngIf="adFormGroup.get('ad.streetName')?.errors && adFormGroup.get('ad.streetName')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.streetName')?.errors?.['required']">
+              Le nom de la rue est requis.
+            </div>
+          </div>
+
+          <input formControlName="streetNumber" type="text" placeholder="Numéro de rue">
+          <div *ngIf="adFormGroup.get('ad.streetNumber')?.errors && adFormGroup.get('ad.streetNumber')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.streetNumber')?.errors?.['required']">
+              Le numéro de rue est requis.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.streetNumber')?.errors?.['pattern']">
+              Le numéro de rue doit être numérique.
+            </div>
+          </div>
+
+          <input formControlName="postalCode" type="text" placeholder="Code postal">
+          <div *ngIf="adFormGroup.get('ad.postalCode')?.errors && adFormGroup.get('ad.postalCode')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.postalCode')?.errors?.['required']">
+              Le code postal est requis.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section part2">
+          <div class="form-group">
+            <label>
+              <input type="checkbox" formControlName="lowIncomeBuilding"> Immeuble à faible revenu
+            </label>
+          </div>
+          <select formControlName="adType">
+            <option value="" disabled selected>Choisir le type d'annonce</option>
+            <option *ngFor="let type of adTypes" [value]="type">{{ type }}</option>
+          </select>
+          <div *ngIf="adFormGroup.get('ad.adType')?.errors && adFormGroup.get('ad.adType')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.adType')?.errors?.['required']">
+              Le type d'annonce est requis.
+            </div>
+          </div>
+
+          <input formControlName="plotSurface" type="text" placeholder="Surface du terrain">
+          <div *ngIf="adFormGroup.get('ad.plotSurface')?.errors && adFormGroup.get('ad.plotSurface')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.plotSurface')?.errors?.['required']">
+              La surface du terrain est requise.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.plotSurface')?.errors?.['pattern']">
+              La surface du terrain doit être numérique.
+            </div>
+          </div>
+
+          <input formControlName="numberOfBedrooms" type="text" placeholder="Nombre de chambres">
+          <div *ngIf="adFormGroup.get('ad.numberOfBedrooms')?.errors && adFormGroup.get('ad.numberOfBedrooms')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.numberOfBedrooms')?.errors?.['required']">
+              Le nombre de chambres est requis.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.numberOfBedrooms')?.errors?.['pattern']">
+              Ce champ doit être numérique.
+            </div>
+          </div>
+
+          <input formControlName="numberOfBathrooms" type="text" placeholder="Nombre de salles de bain">
+          <div *ngIf="adFormGroup.get('ad.numberOfBathrooms')?.errors && adFormGroup.get('ad.numberOfBathrooms')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.numberOfBathrooms')?.errors?.['required']">
+              Le nombre de salles de bain est requis.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.numberOfBathrooms')?.errors?.['pattern']">
+              Ce champ doit être numérique.
+            </div>
+          </div>
+
+          <input formControlName="floor" type="text" placeholder="Nombre d'étages">
+          <div *ngIf="adFormGroup.get('ad.floor')?.errors && adFormGroup.get('ad.floor')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.floor')?.errors?.['required']">
+              Le nombre d'étages est requis.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.floor')?.errors?.['pattern']">
+              Ce champ doit être numérique.
+            </div>
+          </div>
+
+          <input formControlName="price" type="text" placeholder="Prix">
+          <div *ngIf="adFormGroup.get('ad.price')?.errors && adFormGroup.get('ad.price')?.touched" class="validation-text">
+            <div *ngIf="adFormGroup.get('ad.price')?.errors?.['required']">
+              Le prix est requis.
+            </div>
+            <div *ngIf="adFormGroup.get('ad.price')?.errors?.['pattern']">
+              Ce champ doit être numérique.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="button-container">
+        <button type="submit">CRÉER</button>
+      </div>
+    </div>
+  </form>
+</div>
