@@ -58,6 +58,17 @@ ImmoQuebec-Platform/
 
 ---
 
+<<<<<<< HEAD
+=======
+## Configuration
+
+Pour exécuter ce projet, insérez dans fichier `src/environments/environment.ts` vos propres clés Firebase.
+
+Les clés API ne sont incluses dans ce dépôt pour des raisons de sécurité.
+
+---
+
+>>>>>>> master
 ##  Licence
 
 Projet académique 

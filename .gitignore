@@ -1,0 +1,40 @@
+# ---- BACKEND (Spring Boot / Maven) ----
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/
+*.log
+*.iml
+*.class
+*.jar
+*.war
+hs_err_pid*
+.idea/
+
+# ---- FRONTEND (Angular) ----
+node_modules/
+dist/
+.angular/
+.env
+.env.local
+.env.*.local
+out-tsc/
+.tmp/
+.bazel-out/
+.history/
+
+# ---- OS/IDE-specific ----
+.DS_Store
+Thumbs.db
+*.sw?
+*.sublime-*
+.vscode/
+.project
+.classpath
+.settings/
+.c9/
+*.launch
+*.sublime-workspace
+*.bak
+*.tmp
+*.swp
+*.lock
